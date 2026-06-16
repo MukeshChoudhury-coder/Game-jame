@@ -1,0 +1,485 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#020617;
+    color:white;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* ===================== */
+/* SCREEN SYSTEM */
+/* ===================== */
+
+.screen{
+    display:none;
+    min-height:100vh;
+    width:100%;
+    padding:20px;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+.screen.active{
+    display:flex;
+}
+
+/* ===================== */
+/* CARD */
+/* ===================== */
+
+.card{
+    width:100%;
+    max-width:420px;
+    background:#0f172a;
+    border:1px solid #38bdf8;
+    border-radius:25px;
+    padding:30px;
+    text-align:center;
+
+    box-shadow:
+    0 0 25px rgba(56,189,248,.3);
+}
+
+.card h1{
+    margin-bottom:15px;
+}
+
+.card p{
+    margin-bottom:20px;
+    color:#cbd5e1;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+    background:#1e293b;
+    color:white;
+    margin-bottom:15px;
+    font-size:1rem;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+    background:#0ea5e9;
+    color:white;
+    border-radius:12px;
+    padding:14px 24px;
+    font-size:1rem;
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-3px);
+}
+
+button:active{
+    transform:scale(.95);
+}
+
+/* ===================== */
+/* CHARACTER SCREEN */
+/* ===================== */
+
+.sectionTitle{
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.characterPreview{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+#characterImage{
+    width:220px;
+    height:220px;
+    object-fit:contain;
+
+    filter:
+    drop-shadow(0 0 15px #38bdf8);
+
+    animation:float 2s infinite;
+}
+
+#characterName{
+    margin-top:10px;
+}
+
+#omnitrix{
+    width:180px;
+    cursor:pointer;
+    margin:20px 0;
+
+    animation:pulse 2s infinite;
+}
+
+#selectCharacterBtn{
+    min-width:220px;
+}
+
+/* ===================== */
+/* GAME */
+/* ===================== */
+
+.gameHeader{
+
+    width:100%;
+    max-width:500px;
+
+    display:flex;
+    justify-content:space-between;
+
+    margin-bottom:15px;
+
+    font-size:1rem;
+}
+
+#omnitrixMessage{
+
+    display:none;
+
+    background:#0ea5e9;
+
+    padding:10px 20px;
+
+    border-radius:20px;
+
+    margin-bottom:10px;
+
+    animation:fadeDown .5s;
+}
+
+#gameOmnitrix{
+
+    width:70px;
+
+    margin-bottom:10px;
+
+    cursor:pointer;
+
+    animation:pulse 2s infinite;
+}
+
+#gameCanvas{
+
+    width:100%;
+
+    max-width:450px;
+
+    aspect-ratio:3/5;
+
+    height:auto;
+
+    border:2px solid #38bdf8;
+
+    border-radius:20px;
+
+    background:#0b1120;
+
+    box-shadow:
+    0 0 20px rgba(56,189,248,.4);
+}
+
+/* ===================== */
+/* CONTROLS */
+/* ===================== */
+
+.mobileControls{
+
+    position:fixed;
+
+    bottom:20px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    gap:15px;
+
+    z-index:999;
+}
+
+.mobileControls button{
+
+    width:65px;
+
+    height:65px;
+
+    border-radius:50%;
+
+    font-size:1.3rem;
+}
+
+/* ===================== */
+/* POPUP */
+/* ===================== */
+
+.popup{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.85);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:1000;
+}
+
+.popup.active{
+    display:flex;
+}
+
+.popupCard{
+
+    width:90%;
+
+    max-width:380px;
+
+    background:#0f172a;
+
+    border:1px solid #38bdf8;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    text-align:center;
+
+    animation:pop .4s ease;
+}
+
+.popupCard h1{
+    margin-bottom:10px;
+}
+
+.popupCard p{
+    margin-bottom:20px;
+}
+
+/* ===================== */
+/* REWARD */
+/* ===================== */
+
+#rewardScreen h1{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.boxContainer{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+}
+
+.rewardBox{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:18px;
+
+    background:#0f172a;
+
+    border:2px solid #38bdf8;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:2.5rem;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    animation:float 2s infinite;
+}
+
+.rewardBox:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+    0 0 15px #38bdf8;
+}
+
+.rewardArea{
+
+    margin-top:30px;
+
+    text-align:center;
+
+    min-height:220px;
+}
+
+#rewardPokemon{
+
+    width:180px;
+
+    display:none;
+
+    margin:auto;
+}
+
+#complimentText{
+
+    margin-top:15px;
+
+    line-height:1.7;
+
+    color:#dbeafe;
+}
+
+#playAgainBtn{
+
+    margin-top:20px;
+
+    display:none;
+}
+
+/* ===================== */
+/* ANIMATIONS */
+/* ===================== */
+
+@keyframes pulse{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.08);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+}
+
+@keyframes fadeDown{
+
+    from{
+        opacity:0;
+        transform:translateY(-20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes pop{
+
+    from{
+        opacity:0;
+        transform:scale(.7);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* ===================== */
+/* MOBILE */
+/* ===================== */
+
+@media(max-width:768px){
+
+    #characterImage{
+
+        width:180px;
+        height:180px;
+    }
+
+    #omnitrix{
+
+        width:140px;
+    }
+
+    #gameOmnitrix{
+
+        width:60px;
+    }
+
+    .rewardBox{
+
+        width:80px;
+        height:80px;
+    }
+
+    .mobileControls button{
+
+        width:60px;
+        height:60px;
+    }
+}
+
+@media(max-width:480px){
+
+    #characterImage{
+
+        width:150px;
+        height:150px;
+    }
+
+    #omnitrix{
+
+        width:120px;
+    }
+
+    .rewardBox{
+
+        width:70px;
+        height:70px;
+    }
+
+    .mobileControls{
+
+        gap:10px;
+    }
+}
