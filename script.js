@@ -793,7 +793,7 @@ const starters = [
 "your caring nature",
 "your presence"*/
 
-"I Love You"
+"I've fallen for your smile, your heart, and everything about you. So here's my question... Will you be my special one baby"
 ];
 
 const middles = [
@@ -808,7 +808,7 @@ const middles = [
 "makes everything better",
 "is truly special"*/
 
-"I Love you Baby"
+"I can't imagine my days without you anymore. Will you be my forever one baby?"
 ];
 
 const endings = [
@@ -823,7 +823,7 @@ const endings = [
 "like a real pookie 🐻",
 "all the time 💙"
 */
-"I love you so much "
+"You make my heart smile in ways no one else can. Will you be mine baby?"  
 ];
 
 function generateCompliment(){
