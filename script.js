@@ -793,7 +793,7 @@ const starters = [
 "your caring nature",
 "your presence"*/
 
-"I've fallen for your smile, your heart, and everything about you. So here's my question... Will you be my special one baby"
+"gulab phool, genda phool"
 ];
 
 const middles = [
@@ -808,7 +808,7 @@ const middles = [
 "makes everything better",
 "is truly special"*/
 
-"I can't imagine my days without you anymore. Will you be my forever one baby?"
+"all i want to say maan jao meri beautiful ❤️"
 ];
 
 const endings = [
@@ -823,7 +823,7 @@ const endings = [
 "like a real pookie 🐻",
 "all the time 💙"
 */
-"You make my heart smile in ways no one else can. Will you be mine baby?"  
+" tum jitna karo gi gussa mai utna manaunga,  kuch bhi ho jaye tumko chor ke kabhi nhi jaunga 😌?"  
 ];
 
 function generateCompliment(){
