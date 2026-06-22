@@ -1031,7 +1031,7 @@ window.addEventListener(
 "load",
 ()=>{
 
-    const savedLevel =
+    const savedLevel=
     localStorage.getItem(
         "highestLevel"
     );
