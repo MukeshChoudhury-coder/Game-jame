@@ -793,7 +793,7 @@ const starters = [
 "your caring nature",
 "your presence"*/
 
-"gulab phool, genda phool"
+"Hey"
 ];
 
 const middles = [
@@ -808,7 +808,7 @@ const middles = [
 "makes everything better",
 "is truly special"*/
 
-"all i want to say maan jao meri beautiful ❤️"
+"will you be my friend"
 ];
 
 const endings = [
@@ -823,7 +823,7 @@ const endings = [
 "like a real pookie 🐻",
 "all the time 💙"
 */
-" tum jitna karo gi gussa mai utna manaunga,  kuch bhi ho jaye tumko chor ke kabhi nhi jaunga 😌?"  
+" just say yes 🙂"  
 ];
 
 function generateCompliment(){
