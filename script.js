@@ -1,6 +1,25 @@
-// ==========================
+// ======================================
 // SCREENS
-// ==========================
+// ======================================
+const togetherBtn =
+document.getElementById(
+"togetherBtn"
+);
+
+const togetherScreen =
+document.getElementById(
+"togetherScreen"
+);
+
+const togetherText =
+document.getElementById(
+"togetherText"
+);
+
+const finalBackBtn =
+document.getElementById(
+"finalBackBtn"
+);
 
 const nameScreen =
 document.getElementById("nameScreen");
@@ -11,9 +30,12 @@ document.getElementById("selectionScreen");
 const gameScreen =
 document.getElementById("gameScreen");
 
-// ==========================
+const levelPopup =
+document.getElementById("levelPopup");
+
+// ======================================
 // INPUTS
-// ==========================
+// ======================================
 
 const playerNameInput =
 document.getElementById("playerName");
@@ -21,9 +43,9 @@ document.getElementById("playerName");
 const startBtn =
 document.getElementById("startBtn");
 
-// ==========================
-// CHARACTER SELECT
-// ==========================
+// ======================================
+// CHARACTER SELECTION
+// ======================================
 
 const omnitrix =
 document.getElementById("omnitrix");
@@ -37,9 +59,9 @@ document.getElementById("characterName");
 const selectCharacterBtn =
 document.getElementById("selectCharacterBtn");
 
-// ==========================
+// ======================================
 // VARIABLES
-// ==========================
+// ======================================
 
 let playerName = "";
 
@@ -47,14 +69,18 @@ let selectedPokemon = null;
 
 let selectedPokemonId = null;
 
-// ==========================
+// ======================================
 // LOAD SAVED NAME
-// ==========================
+// ======================================
 
-window.addEventListener("load",()=>{
+window.addEventListener(
+"load",
+()=>{
 
     const savedName =
-    localStorage.getItem("playerName");
+    localStorage.getItem(
+        "playerName"
+    );
 
     if(savedName){
 
@@ -63,11 +89,12 @@ window.addEventListener("load",()=>{
 
     }
 
-});
+}
+);
 
-// ==========================
-// START GAME BUTTON
-// ==========================
+// ======================================
+// START BUTTON
+// ======================================
 
 startBtn.addEventListener(
 "click",
@@ -79,7 +106,7 @@ startBtn.addEventListener(
     if(name === ""){
 
         alert(
-        "Enter your name first 💙"
+        "Please enter your name 💙"
         );
 
         return;
@@ -101,11 +128,12 @@ startBtn.addEventListener(
         "active"
     );
 
-});
+}
+);
 
-// ==========================
-// LOAD RANDOM POKEMON
-// ==========================
+// ======================================
+// RANDOM POKEMON LOAD
+// ======================================
 
 async function loadRandomPokemon(){
 
@@ -114,7 +142,7 @@ async function loadRandomPokemon(){
         const randomId =
 
         Math.floor(
-            Math.random()*151
+            Math.random() * 151
         ) + 1;
 
         const response =
@@ -127,7 +155,8 @@ async function loadRandomPokemon(){
         const data =
         await response.json();
 
-        selectedPokemon = data;
+        selectedPokemon =
+        data;
 
         selectedPokemonId =
         data.id;
@@ -146,15 +175,18 @@ async function loadRandomPokemon(){
 
     catch(error){
 
-        console.log(error);
+        console.log(
+        "Pokemon Load Error",
+        error
+        );
 
     }
 
 }
 
-// ==========================
+// ======================================
 // OMNITRIX CLICK
-// ==========================
+// ======================================
 
 omnitrix.addEventListener(
 "click",
@@ -162,11 +194,12 @@ omnitrix.addEventListener(
 
     loadRandomPokemon();
 
-});
+}
+);
 
-// ==========================
-// SELECT CHARACTER
-// ==========================
+// ======================================
+// SAVE CHARACTER
+// ======================================
 
 selectCharacterBtn.addEventListener(
 "click",
@@ -200,11 +233,16 @@ selectCharacterBtn.addEventListener(
         "active"
     );
 
-});
+    loadPlayer();
 
-// ==========================
-// HELPER
-// ==========================
+    startGame();
+
+}
+);
+
+// ======================================
+// GET SAVED CHARACTER
+// ======================================
 
 function getSavedPokemon(){
 
@@ -216,67 +254,12 @@ function getSavedPokemon(){
 
     );
 
-} 
-// ==========================
-// GAME ELEMENTS
-// ==========================
+}
 
-const canvas =
-document.getElementById("gameCanvas");
 
-const ctx =
-canvas.getContext("2d");
-
-const leftBtn =
-document.getElementById("leftBtn");
-
-const rightBtn =
-document.getElementById("rightBtn");
-
-const shootBtn =
-document.getElementById("shootBtn");
-
-const levelText =
-document.getElementById("levelText");
-
-const scoreText =
-document.getElementById("scoreText");
-
-const gameOmnitrix =
-document.getElementById("gameOmnitrix");
-
-const omnitrixMessage =
-document.getElementById("omnitrixMessage");
-
-const levelPopup =
-document.getElementById("levelPopup");
-
-// ==========================
-// GAME VARIABLES
-// ==========================
-
-let currentLevel = 1;
-
-let score = 0;
-
-let enemiesKilled = 0;
-
-let enemySpeed = 1.5;
-
-let gameRunning = false;
-
-let bullets = [];
-
-let enemies = [];
-
-let moveLeft = false;
-let moveRight = false;
-
-let omnitrixReady = false;
-
-// ==========================
-// PLAYER
-// ==========================
+// ======================================
+// PLAYER OBJECT
+// ======================================
 
 const player = {
 
@@ -292,16 +275,17 @@ const player = {
 
 };
 
-// ==========================
-// LOAD PLAYER
-// ==========================
+// ======================================
+// LOAD PLAYER IMAGE
+// ======================================
 
 function loadPlayer(){
 
     const pokemon =
     getSavedPokemon();
 
-    if(!pokemon) return;
+    if(!pokemon)
+    return;
 
     player.image =
     new Image();
@@ -314,39 +298,85 @@ function loadPlayer(){
 
 }
 
-// ==========================
+// ======================================
+// GAME ELEMENTS
+// ======================================
+
+const canvas =
+document.getElementById(
+"gameCanvas"
+);
+
+const ctx =
+canvas.getContext("2d");
+
+const leftBtn =
+document.getElementById(
+"leftBtn"
+);
+
+const rightBtn =
+document.getElementById(
+"rightBtn"
+);
+
+const shootBtn =
+document.getElementById(
+"shootBtn"
+);
+
+const scoreText =
+document.getElementById(
+"scoreText"
+);
+
+// ======================================
+// GAME VARIABLES
+// ======================================
+
+let gameRunning = false;
+
+let score = 0;
+
+let enemySpeed = 1.5;
+
+let enemiesKilled = 0;
+
+let bullets = [];
+
+let enemies = [];
+
+let moveLeft = false;
+
+let moveRight = false;
+
+// ======================================
 // START GAME
-// ==========================
-
-selectCharacterBtn.addEventListener(
-"click",
-()=>{
-
-    loadPlayer();
-
-    startGame();
-
-});
-
-// ==========================
-// START GAME
-// ==========================
+// ======================================
 
 function startGame(){
 
     gameRunning = true;
 
-    spawnEnemy();
+    score = 0;
 
-    startOmnitrixReload();
+    enemiesKilled = 0;
+
+    bullets = [];
+
+    enemies = [];
+
+    scoreText.textContent = "0";
+
+    spawnEnemy();
 
     gameLoop();
 
 }
 
-// ==========================
+// ======================================
 // DRAW PLAYER
-// ==========================
+// ======================================
 
 function drawPlayer(){
 
@@ -368,17 +398,19 @@ function drawPlayer(){
 
 }
 
-// ==========================
-// BULLETS
-// ==========================
+// ======================================
+// SHOOT
+// ======================================
 
 function shoot(){
 
     bullets.push({
 
-        x:player.x + 30,
+        x:
+        player.x + 30,
 
-        y:player.y,
+        y:
+        player.y,
 
         width:8,
 
@@ -387,6 +419,10 @@ function shoot(){
     });
 
 }
+
+// ======================================
+// DRAW BULLETS
+// ======================================
 
 function drawBullets(){
 
@@ -408,7 +444,9 @@ function drawBullets(){
 
         );
 
-        if(bullet.y < 0){
+        if(
+            bullet.y < 0
+        ){
 
             bullets.splice(
                 index,
@@ -421,14 +459,15 @@ function drawBullets(){
 
 }
 
-// ==========================
-// SINGLE ENEMY
-// ==========================
+// ======================================
+// SPAWN ENEMY
+// ======================================
 
 function spawnEnemy(){
 
-    if(enemies.length > 0)
-    return;
+    if(
+        enemies.length > 0
+    ) return;
 
     enemies.push({
 
@@ -446,9 +485,9 @@ function spawnEnemy(){
 
 }
 
-// ==========================
-// DRAW ENEMY
-// ==========================
+// ======================================
+// DRAW ENEMIES
+// ======================================
 
 function drawEnemies(){
 
@@ -458,7 +497,8 @@ function drawEnemies(){
     enemies.forEach(
     (enemy,index)=>{
 
-        enemy.y += enemySpeed;
+        enemy.y +=
+        enemySpeed;
 
         ctx.fillRect(
 
@@ -483,9 +523,9 @@ function drawEnemies(){
 
 }
 
-// ==========================
-// COLLISION
-// ==========================
+// ======================================
+// COLLISION DETECTION
+// ======================================
 
 function checkCollision(){
 
@@ -532,8 +572,10 @@ function checkCollision(){
                 scoreText.textContent =
                 score;
 
+                // Mission Complete
+
                 if(
-                    enemiesKilled >= 2
+                    enemiesKilled >= 5
                 ){
 
                     levelComplete();
@@ -554,9 +596,9 @@ function checkCollision(){
 
 }
 
-// ==========================
+// ======================================
 // LEVEL COMPLETE
-// ==========================
+// ======================================
 
 function levelComplete(){
 
@@ -568,21 +610,27 @@ function levelComplete(){
 
 }
 
-// ==========================
+// ======================================
 // GAME LOOP
-// ==========================
+// ======================================
 
 function gameLoop(){
 
-    if(!gameRunning)
-    return;
+    if(
+        !gameRunning
+    ) return;
 
     ctx.clearRect(
+
         0,
         0,
+
         canvas.width,
         canvas.height
+
     );
+
+    // Move Player
 
     if(moveLeft){
 
@@ -598,6 +646,8 @@ function gameLoop(){
 
     }
 
+    // Boundary
+
     if(player.x < 0){
 
         player.x = 0;
@@ -605,13 +655,19 @@ function gameLoop(){
     }
 
     if(
+
         player.x >
+
         canvas.width -
+
         player.width
+
     ){
 
         player.x =
+
         canvas.width -
+
         player.width;
 
     }
@@ -630,9 +686,9 @@ function gameLoop(){
 
 }
 
-// ==========================
+// ======================================
 // MOBILE CONTROLS
-// ==========================
+// ======================================
 
 leftBtn.addEventListener(
 "touchstart",
@@ -671,22 +727,40 @@ shootBtn.addEventListener(
 shoot
 );
 
-// ==========================
-// KEYBOARD
-// ==========================
+// ======================================
+// KEYBOARD SUPPORT
+// ======================================
 
 document.addEventListener(
 "keydown",
 (e)=>{
 
-    if(e.key==="ArrowLeft")
-    moveLeft=true;
+    if(
+        e.key ===
+        "ArrowLeft"
+    ){
 
-    if(e.key==="ArrowRight")
-    moveRight=true;
+        moveLeft = true;
 
-    if(e.code==="Space")
-    shoot();
+    }
+
+    if(
+        e.key ===
+        "ArrowRight"
+    ){
+
+        moveRight = true;
+
+    }
+
+    if(
+        e.code ===
+        "Space"
+    ){
+
+        shoot();
+
+    }
 
 });
 
@@ -694,356 +768,423 @@ document.addEventListener(
 "keyup",
 (e)=>{
 
-    if(e.key==="ArrowLeft")
-    moveLeft=false;
+    if(
+        e.key ===
+        "ArrowLeft"
+    ){
 
-    if(e.key==="ArrowRight")
-    moveRight=false;
+        moveLeft = false;
 
-});
+    }
 
-// ==========================
-// OMNITRIX RELOAD
-// ==========================
+    if(
+        e.key ===
+        "ArrowRight"
+    ){
 
-function startOmnitrixReload(){
+        moveRight = false;
 
-    setInterval(()=>{
-
-        omnitrixReady = true;
-
-        omnitrixMessage.style.display =
-        "block";
-
-        omnitrixMessage.innerText =
-
-        "⚡ Select Your Character";
-
-        setTimeout(()=>{
-
-            omnitrixMessage.style.display =
-            "none";
-
-        },2000);
-
-    },3000);
-
-}
-
-// ==========================
-// CHANGE CHARACTER
-// ==========================
-
-gameOmnitrix.addEventListener(
-"click",
-async()=>{
-
-    if(!omnitrixReady)
-    return;
-
-    omnitrixReady = false;
-
-    await loadRandomPokemon();
-
-    player.image =
-    new Image();
-
-    player.image.src =
-
-    selectedPokemon.sprites.other[
-    "official-artwork"
-    ].front_default;
+    }
 
 });
-// ==========================
-// REWARD ELEMENTS
-// ==========================
+
+// ======================================
+// STORY ELEMENTS
+// ======================================
 
 const claimRewardBtn =
-document.getElementById("claimRewardBtn");
+document.getElementById(
+"claimRewardBtn"
+);
 
-const rewardScreen =
-document.getElementById("rewardScreen");
+const storyScreen =
+document.getElementById(
+"storyScreen"
+);
 
-const rewardBoxes =
-document.querySelectorAll(".rewardBox");
+const missScreen =
+document.getElementById(
+"missScreen"
+);
 
-const rewardPokemon =
-document.getElementById("rewardPokemon");
+const loveScreen =
+document.getElementById(
+"loveScreen"
+);
 
-const complimentText =
-document.getElementById("complimentText");
+const pandaScreen =
+document.getElementById(
+"pandaScreen"
+);
 
-const playAgainBtn =
-document.getElementById("playAgainBtn");
+const storyText =
+document.getElementById(
+"storyText"
+);
 
-// ==========================
-// COMPLIMENT GENERATOR
-// ==========================
+const missBtn =
+document.getElementById(
+"missBtn"
+);
 
-const starters = [
-/*"your smile",
-"your kindness",
-"your energy",
-"your personality",
-"your laugh",
-"your positivity",
-"your confidence",
-"your vibe",
-"your caring nature",
-"your presence"*/
+const loveBtn =
+document.getElementById(
+"loveBtn"
+);
 
-"Hey"
-];
+const specialBtn =
+document.getElementById(
+"specialBtn"
+);
 
-const middles = [
-/*"lights up every room",
-"makes people smile",
-"creates beautiful memories",
-"makes life brighter",
-"brings happiness",
-"feels magical",
-"spreads positivity",
-"makes hearts happy",
-"makes everything better",
-"is truly special"*/
+const backBtn =
+document.getElementById(
+"backBtn"
+);
 
-"will you be my friend"
-];
+const counter =
+document.getElementById(
+"counter"
+);
 
-const endings = [
-/*"every single day 💖",
-"wherever you go ✨",
-"in the cutest way possible 🧸",
-"without even trying 🌸",
-"and everyone notices it 💫",
-"like pure sunshine ☀️",
-"more than you realize ❤️",
-"and that's amazing 🌟",
-"like a real pookie 🐻",
-"all the time 💙"
-*/
-" just say yes 🙂"  
-];
+const teddyImg =
+document.getElementById(
+"teddyImg"
+);
 
-function generateCompliment(){
+const pandaImg =
+document.getElementById(
+"pandaImg"
+);
 
-    const name =
-    localStorage.getItem("playerName")
-    || "Pookie";
+const finalMsg =
+document.getElementById(
+"finalMsg"
+);
 
-    const s =
-    starters[
-        Math.floor(
-            Math.random() *
-            starters.length
-        )
-    ];
+const bgMusic =
+document.getElementById(
+"bgMusic"
+);
 
-    const m =
-    middles[
-        Math.floor(
-            Math.random() *
-            middles.length
-        )
-    ];
+// ======================================
+// 100 LOVE MESSAGES
+// ======================================
 
-    const e =
-    endings[
-        Math.floor(
-            Math.random() *
-            endings.length
-        )
-    ];
+const loveMessages = [];
 
-    return `${name}, ${s} ${m} ${e}`;
+for(
+let i = 1;
+i <= 100;
+i++
+){
+
+loveMessages.push(
+
+` {name},
+
+Since the day you entered my life, everything started feeling a little brighter.
+
+`
+
+);
+
 }
 
-// ==========================
+// ======================================
 // CLAIM REWARD
-// ==========================
+// ======================================
 
 claimRewardBtn.addEventListener(
 "click",
 ()=>{
 
-    levelPopup.classList.remove(
-        "active"
-    );
+levelPopup.classList.remove(
+"active"
+);
 
-    gameScreen.classList.remove(
-        "active"
-    );
+startStory();
 
-    rewardScreen.classList.add(
-        "active"
-    );
+}
+);
 
-});
+// ======================================
+// STORY START
+// ======================================
+function startStory() {
 
-// ==========================
-// RANDOM CUTE POKEMON
-// ==========================
+  gameScreen.classList.remove("active");
+  storyScreen.classList.add("active");
 
-async function loadRewardPokemon(){
+  const name =
+    localStorage.getItem("playerName") || "Pookie";
 
-    const cutePokemon = [
-
-        25,   // Pikachu
-        133,  // Eevee
-        39,   // Jigglypuff
-        172,  // Pichu
-        175,  // Togepi
-        151,  // Mew
-        37,   // Vulpix
-        35    // Clefairy
-
+  const randomMessage =
+    loveMessages[
+      Math.floor(Math.random() * loveMessages.length)
     ];
 
-    const randomId =
+  const msg =
+    randomMessage.replace("{name}", name);
 
-    cutePokemon[
-        Math.floor(
-            Math.random() *
-            cutePokemon.length
-        )
-    ];
+  let i = 0;
+  storyText.innerHTML = "";
 
-    const response =
-    await fetch(
-    `https://pokeapi.co/api/v2/pokemon/${randomId}`
-    );
+  let interval = setInterval(() => {
 
-    const data =
-    await response.json();
+    storyText.innerHTML += msg.charAt(i);
 
-    rewardPokemon.src =
+    i++;
 
-    data.sprites.other[
-    "official-artwork"
-    ].front_default;
+    if(i >= msg.length){
+
+      clearInterval(interval);
+
+      missBtn.style.display = "block";
+    }
+
+  }, 60); // slow cinematic typing
 
 }
 
-// ==========================
-// OPEN BOX
-// ==========================
+// ======================================
+// MISS YOU SCREEN
+// ======================================
 
-rewardBoxes.forEach(box=>{
-
-    box.addEventListener(
-    "click",
-    async ()=>{
-
-        rewardBoxes.forEach(
-        b=>{
-
-            b.style.pointerEvents =
-            "none";
-
-        });
-
-        await loadRewardPokemon();
-
-        rewardPokemon.style.display =
-        "block";
-
-        complimentText.textContent =
-        generateCompliment();
-
-        playAgainBtn.style.display =
-        "inline-block";
-
-        box.innerHTML = "🎉";
-
-    });
-
-});
-
-// ==========================
-// PLAY AGAIN
-// ==========================
-
-playAgainBtn.addEventListener(
+missBtn.addEventListener(
 "click",
 ()=>{
 
-    currentLevel++;
+storyScreen.classList.remove(
+"active"
+);
 
-    localStorage.setItem(
-        "highestLevel",
-        currentLevel
-    );
+missScreen.classList.add(
+"active"
+);
 
-    levelText.textContent =
-    currentLevel;
+// TEDDY IMAGE
 
-    enemySpeed += 0.2;
+teddyImg.src =
+"teddy.png";
 
-    enemiesKilled = 0;
+teddyImg.style.display =
+"block";
 
-    bullets = [];
+let count = 0;
 
-    enemies = [];
+const counterInterval =
+setInterval(()=>{
 
-    scoreText.textContent =
-    score;
+count += Math.floor(
+Math.random() * 5000000
+);
 
-    rewardPokemon.style.display =
-    "none";
+if(
+count >= 1000000000
+){
 
-    complimentText.textContent =
-    "";
+counter.innerText = "∞";
 
-    playAgainBtn.style.display =
-    "none";
+clearInterval(
+counterInterval
+);
 
-    rewardBoxes.forEach(box=>{
+}
 
-        box.innerHTML = "📦";
+else{
 
-        box.style.pointerEvents =
-        "auto";
+counter.innerText =
 
-    });
+count.toLocaleString();
 
-    rewardScreen.classList.remove(
-        "active"
-    );
+}
 
-    gameScreen.classList.add(
-        "active"
-    );
+},30);
 
-    gameRunning = true;
+}
+);
 
-    spawnEnemy();
+// ======================================
+// LOVE SCREEN
+// ======================================
 
-    gameLoop();
-
-});
-
-// ==========================
-// LOAD SAVED LEVEL
-// ==========================
-
-window.addEventListener(
-"load",
+loveBtn.addEventListener(
+"click",
 ()=>{
 
-    const savedLevel=
-    localStorage.getItem(
-        "highestLevel"
+missScreen.classList.remove(
+"active"
+);
+
+loveScreen.classList.add(
+"active"
+);
+
+}
+);
+togetherBtn.addEventListener(
+"click",
+()=>{
+
+    pandaScreen.classList.remove(
+    "active"
     );
 
-    if(savedLevel){
+    togetherScreen.classList.add(
+    "active"
+    );
 
-        currentLevel =
-        Number(savedLevel);
+    startTogetherStory();
 
-        levelText.textContent =
-        currentLevel;
+}
+);
+// ======================================
+// PANDA SCREEN
+// ======================================
 
-    }
+specialBtn.addEventListener(
+"click",
+()=>{
 
-});
+loveScreen.classList.remove(
+"active"
+);
+
+pandaScreen.classList.add(
+"active"
+);
+
+// PANDA IMAGE
+
+pandaImg.src =
+"heart.jpg";
+
+pandaImg.style.display =
+"block";
+
+// FINAL MESSAGE
+
+finalMsg.innerHTML =
+
+`${playerName},
+
+Thank you for being a beautiful part of my life.
+
+Some people enter our lives and leave memories.
+
+Some people enter our lives and change everything.
+
+You belong to the second category.
+
+Your smile, your kindness, your presence and the happiness you bring are truly special.
+
+No matter what happens in life, I will always be grateful that our paths crossed.
+
+Thank you for existing.
+
+Thank you for being you.
+
+💙`;
+
+}
+);
+
+// ======================================
+// BACK TO GAME
+// ======================================
+
+// ==========================
+// TOGETHER STORY
+// ==========================
+
+function startTogetherStory(){
+
+    const togetherText =
+    document.getElementById("togetherText");
+
+    const messages = [
+
+`Every beautiful memory starts with a simple moment.
+
+I never knew that someone could become so important without even trying.
+
+Some people enter our lives and leave memories.
+
+But some people enter our hearts and stay there forever.
+
+You became one of those special people for me.
+
+Thank you for every smile, every conversation and every moment.
+
+No matter where life takes us, these memories will always remain special. 💙`,
+
+`Life is full of thousands of people.
+
+Yet somehow there are only a few who make everything feel different.
+
+Your presence brings comfort, happiness and peace.
+
+You may never realize how much your smile can brighten someone's day.
+
+Thank you for being part of my story.
+
+You are truly special and always will be. ✨`
+
+    ];
+
+    const randomMessage =
+    messages[
+        Math.floor(
+            Math.random() *
+            messages.length
+        )
+    ];
+
+    togetherText.innerHTML = "";
+
+    let i = 0;
+
+    const typing = setInterval(()=>{
+
+        togetherText.innerHTML +=
+        randomMessage.charAt(i);
+
+        i++;
+
+        if(i >= randomMessage.length){
+
+            clearInterval(typing);
+
+        }
+
+    },50);
+
+}
+
+
+backBtn.addEventListener(
+"click",
+()=>{
+
+pandaScreen.classList.remove(
+"active"
+);
+
+selectionScreen.classList.add(
+"active"
+);
+
+score = 0;
+
+enemiesKilled = 0;
+
+bullets = [];
+
+enemies = [];
+
+scoreText.textContent =
+"0";
+
+}
+); 
