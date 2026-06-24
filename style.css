@@ -496,13 +496,30 @@ button:active{
 }
 
 /* STORY TEXT ANIMATION */
-.storyText{
-    font-size:20px;
-    max-width:90%;
-    line-height:1.6;
-    animation:fadeIn 0.8s ease;
-}
 
+.storyText{
+
+    max-width:850px;
+
+    font-size:28px;
+
+    line-height:2.2;
+
+    font-weight:700;
+
+    color:white;
+
+    font-family:'Dancing Script', cursive;
+
+    text-align:center;
+
+    text-shadow:
+    0 0 10px rgba(255,255,255,.6),
+    0 0 20px rgba(255,105,180,.5);
+
+    animation:
+    romanticFade 2s ease;
+}
 /* HIDDEN BUTTON */
 .hidden{
     display:none;
@@ -1045,4 +1062,44 @@ translateY(-15px);
 transform:
 translateY(0);
 }
-    }
+}
+/* ================================= */
+/* ROMANTIC BACKGROUND */
+/* ================================= */
+
+#storyScreen,
+#missScreen,
+#loveScreen,
+#pandaScreen,
+#togetherScreen{
+
+    background-image:
+    linear-gradient(
+    rgba(0,0,0,.35),
+    rgba(0,0,0,.35)
+    ),
+    url("back.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+#finalMsg,
+#loveMessage,
+#togetherText{
+
+    font-family:'Dancing Script', cursive;
+
+    font-size:30px;
+
+    font-weight:700;
+
+    line-height:2.2;
+
+    color:white;
+
+    text-shadow:
+    0 0 10px rgba(255,255,255,.7),
+    0 0 20px rgba(255,105,180,.5);
+    }a
