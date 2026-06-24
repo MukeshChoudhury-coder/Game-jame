@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omnitrix Pookie Adventure</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omnitrix Pookie Adventure</title>
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <!-- ========================= -->
@@ -19,9 +20,7 @@
 
         <h1>💙 Welcome Pookie 💙</h1>
 
-        <p>
-            Enter your name to start the adventure
-        </p>
+        <p>Enter your name to start adventure</p>
 
         <input
             type="text"
@@ -37,9 +36,8 @@
 
 </section>
 
-
 <!-- ========================= -->
-<!-- CHARACTER SELECTION -->
+<!-- CHARACTER SCREEN -->
 <!-- ========================= -->
 
 <section id="selectionScreen" class="screen">
@@ -62,22 +60,17 @@
 
     </div>
 
-    <!-- YOUR OMNITRIX IMAGE -->
-
     <img
         id="omnitrix"
-        src="./Omnitrix.jpg"
+        src="Omnitrix.jpg"
         alt="Omnitrix"
     >
 
     <button id="selectCharacterBtn">
-
-        Select Character ⚡
-
+        Start Game ⚡
     </button>
 
 </section>
-
 
 <!-- ========================= -->
 <!-- GAME SCREEN -->
@@ -88,32 +81,20 @@
     <div class="gameHeader">
 
         <div>
-
             Level :
-            <span id="levelText">
-                1
-            </span>
-
+            <span id="levelText">1</span>
         </div>
 
         <div>
-
             Score :
-            <span id="scoreText">
-                0
-            </span>
-
+            <span id="scoreText">0</span>
         </div>
 
     </div>
 
     <div id="omnitrixMessage">
-
-        ⚡ Select Your Character
-
+        ⚡ Character Ready
     </div>
-
-    <!-- SMALL OMNITRIX -->
 
     <img
         id="gameOmnitrix"
@@ -145,9 +126,8 @@
 
 </section>
 
-
 <!-- ========================= -->
-<!-- LEVEL COMPLETE -->
+<!-- LEVEL COMPLETE POPUP -->
 <!-- ========================= -->
 
 <div id="levelPopup" class="popup">
@@ -159,78 +139,161 @@
         </h1>
 
         <p>
-
-            Claim Your Secret Reward
-
+            Your Secret Reward Awaits
         </p>
 
         <button id="claimRewardBtn">
-
-            Claim Reward 🎁
-
+            Continue 💙
         </button>
 
     </div>
 
 </div>
 
-
 <!-- ========================= -->
-<!-- REWARD SCREEN -->
+<!-- STORY SCREEN -->
 <!-- ========================= -->
 
-<section id="rewardScreen" class="screen">
+<section id="storyScreen" class="screen">
 
-    <h1>
-        Choose Your Secret Box 🎁
-    </h1>
+    <div class="storyContainer">
 
-    <div class="boxContainer">
+        <h1>
+            💌 A Little Message
+        </h1>
 
-        <div class="rewardBox">
-            📦
-        </div>
+        <p id="storyText"></p>
 
-        <div class="rewardBox">
-            📦
-        </div>
-
-        <div class="rewardBox">
-            📦
-        </div>
+        <button
+            id="missBtn"
+            class="hidden"
+        >
+            Click To See How Much I Missed You 💙
+        </button>
 
     </div>
 
-    <div class="rewardArea">
+</section>
+
+<!-- ========================= -->
+<!-- MISS YOU SCREEN -->
+<!-- ========================= -->
+
+<section id="missScreen" class="screen">
+
+    <div class="storyContainer">
 
         <img
-            id="rewardPokemon"
-            src=""
-            alt=""
+            id="teddyImg"
+            src="teddy.png"
+            alt="Teddy Bear"
         >
 
-        <h2 id="complimentText">
+        <h1 id="counter">
+            0
+        </h1>
 
-        </h2>
+        <p>
+            This Much I Missed You ♾️
+        </p>
+
+        <button id="loveBtn">
+            Click To See My Love ❤️
+        </button>
 
     </div>
 
-    <button id="playAgainBtn">
+</section>
 
-        Play Again ❤️
+<!-- ========================= -->
+<!-- LOVE SCREEN -->
+<!-- ========================= -->
 
-    </button>
+<section id="loveScreen" class="screen">
+
+    <div class="storyContainer">
+
+        <div class="heart">
+            ❤️
+        </div>
+
+        <p id="loveMessage">
+
+        </p>
+
+        <button id="specialBtn">
+            Special Message 🐼
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- PANDA SCREEN -->
+<!-- ========================= -->
+
+<section id="pandaScreen" class="screen">
+
+    <div class="storyContainer">
+
+        <img
+            id="pandaImg"
+            src="heart.jpg"
+            alt="Cute Panda"
+        >
+
+        <p id="finalMsg">
+
+        </p>
+
+        
+        
+        <button id="togetherBtn">
+    💙 Us Together 💙
+</button>
+
+
+    </div>
+
+</section>
+<section id="togetherScreen" class="screen">
+
+    <div class="togetherCard">
+
+        <h1 class="togetherTitle">
+            💙 Us Together 💙
+        </h1>
+
+        <img
+        id="coupleImage"
+        src="ours.png"
+        >
+
+        <p id="togetherText"></p>
+
+     
+
+    </div>
+
+       
 
 </section>
 
 
 <!-- ========================= -->
-<!-- AUDIO -->
+<!-- MUSIC -->
 <!-- ========================= -->
 
-<audio id="shootSound"></audio>
-
-<audio id="rewardSound"></audio>
+<audio
+    id="bgMusic"
+    loop
+>
+    <source
+        src="music.mp3"
+        type="audio/mpeg"
+    >
+</audio>
 
 <script src="script.js"></script>
 
