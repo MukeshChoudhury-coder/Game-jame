@@ -943,7 +943,7 @@ function startStory() {
       missBtn.style.display = "block";
     }
 
-  }, 60); // slow cinematic typing
+  }, 120); // slow cinematic typing
 
 }
 
@@ -1158,7 +1158,7 @@ You are truly special and always will be. ✨`
 
         }
 
-    },50);
+    },110);
 
 }
 
@@ -1187,4 +1187,4 @@ scoreText.textContent =
 "0";
 
 }
-); 
+);
